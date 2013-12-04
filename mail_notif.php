@@ -5,6 +5,8 @@
  * @author Jillberth Estillore <jestillore@zoogtech.com>
  */
 
+include 'config.php';
+
 class mail_notif extends rcube_plugin
 {
 	public $task = 'mail';
@@ -15,6 +17,10 @@ class mail_notif extends rcube_plugin
 		$this->rc = rcmail::get_instance();
 		$this->add_hook('new_messages', array($this, 'notify'));
 		$this->include_script('mail_notif.js');
+		if(file_exists('./plugins/mail_notif/config.inc.php'))
+		{
+			$this->load_config('config.inc.php');
+		}
 	}
 
 	public function notify($mailbox)

@@ -6,7 +6,7 @@
 	        var popup = window.webkitNotifications.createNotification('plugins/newmail_notifier/mail.png',
 	            mail.subject, mail.from);
 	        popup.onclick = function() {
-	            open('http://mailbox.zoogtech.com/?_task=mail&_action=show&_uid=' + mail.uid);
+	            open(window.location.origin + '/?_task=mail&_action=show&_uid=' + mail.uid);
 	        }
 	        popup.show();
 	        setTimeout(function() { popup.cancel(); }, 10000);
